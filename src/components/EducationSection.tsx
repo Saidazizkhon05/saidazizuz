@@ -20,7 +20,8 @@ export function EducationSection() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
             whileHover={{ y: -2 }}
-            className="min-w-0 rounded-2xl border border-white/5 bg-panel/80 p-5 transition-colors hover:border-white/10"
+            style={{ borderColor: "var(--color-panel-border)" }}
+            className="panel-glass min-w-0 rounded-2xl border bg-panel/80 p-5 transition-colors"
           >
             <div className="flex items-center gap-3">
               <div className="grid h-9 w-9 place-items-center rounded-[10px] border border-accent-blue/25 bg-accent-blue/10">

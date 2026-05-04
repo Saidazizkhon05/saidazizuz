@@ -63,7 +63,8 @@ function ContactTile({ item, index }: { item: ContactLink; index: number }) {
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45, delay: index * 0.07 }}
       whileHover={{ y: -2 }}
-      className="group flex min-w-0 items-center gap-3 rounded-2xl border border-white/5 bg-panel/80 px-4 py-3.5 transition-colors hover:border-white/10 hover:bg-panel-2"
+      style={{ borderColor: "var(--color-panel-border)" }}
+      className="panel-glass group flex min-w-0 items-center gap-3 rounded-2xl border bg-panel/80 px-4 py-3.5 transition-colors hover:bg-panel-2"
     >
       <div className="grid h-9 w-9 place-items-center rounded-[10px] border border-accent/25 bg-accent/10 text-accent">
         <Icon className="h-4 w-4" strokeWidth={1.6} />

@@ -25,7 +25,8 @@ function SkillGroupCard({ group, index }: { group: SkillGroup; index: number }) 
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -2 }}
-      className="min-w-0 rounded-2xl border border-white/5 bg-panel/80 p-5"
+      style={{ borderColor: "var(--color-panel-border)" }}
+      className="panel-glass min-w-0 rounded-2xl border bg-panel/80 p-5"
     >
       <div className="flex items-center gap-2">
         <span
@@ -78,7 +79,7 @@ function SkillBar({
           {level}
         </motion.span>
       </div>
-      <div className="mt-1.5 h-[5px] overflow-hidden rounded-full bg-white/[0.08]">
+      <div className="mt-1.5 h-[5px] overflow-hidden rounded-full bg-[var(--color-tint)]">
         <motion.div
           initial={{ width: "0%" }}
           animate={{ width: inView ? `${level}%` : "0%" }}

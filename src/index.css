@@ -19,6 +19,62 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+/* ── Dark theme ────────────────────────────────────────────── */
+.dark {
+  color-scheme: dark;
+  --color-bg: #0a0a0c;
+  --color-bg-2: #111114;
+  --color-panel: #121216;
+  --color-panel-2: #16161b;
+  --color-text: #ececf1;
+  --color-muted: #8a8a96;
+  --color-dim: #5b5b67;
+  --color-accent: #c4ff4d;
+  --color-accent-blue: #7c8cff;
+  --color-accent-teal: #5be0c5;
+  --color-accent-warm: #ff9a5b;
+  --color-accent-rose: #ff6b8b;
+  --color-wire: rgba(255, 255, 255, 0.06);
+  --color-wire-2: rgba(255, 255, 255, 0.11);
+  --color-tint: rgba(255, 255, 255, 0.05);
+  --color-timeline: rgba(255, 255, 255, 0.14);
+  --color-grid-line: rgba(255, 255, 255, 0.04);
+  --color-vignette: rgba(10, 10, 12, 0.6);
+  --color-vignette-end: rgba(10, 10, 12, 0.94);
+  --color-scrollbar: rgba(255, 255, 255, 0.08);
+  --color-scrollbar-hover: rgba(255, 255, 255, 0.15);
+  --color-panel-border: rgba(255, 255, 255, 0.06);
+  --color-sidebar-bg: rgba(17, 17, 20, 0.60);
+}
+
+/* ── Light theme ───────────────────────────────────────────── */
+.light {
+  color-scheme: light;
+  --color-bg: #dde1f0;
+  --color-bg-2: #d2d7e8;
+  --color-panel: #ffffff;
+  --color-panel-2: #eef0f8;
+  --color-text: #0e0e14;
+  --color-muted: #52526a;
+  --color-dim: #8888a8;
+  --color-accent: #4a8000;
+  --color-accent-blue: #3040d8;
+  --color-accent-teal: #067860;
+  --color-accent-warm: #c43a00;
+  --color-accent-rose: #c01050;
+  --color-wire: rgba(0, 0, 0, 0.08);
+  --color-wire-2: rgba(0, 0, 0, 0.13);
+  --color-tint: rgba(0, 0, 0, 0.05);
+  --color-timeline: rgba(0, 0, 0, 0.14);
+  --color-grid-line: rgba(0, 0, 0, 0.04);
+  --color-vignette: rgba(221, 225, 240, 0.55);
+  --color-vignette-end: rgba(221, 225, 240, 0.92);
+  --color-scrollbar: rgba(0, 0, 0, 0.14);
+  --color-scrollbar-hover: rgba(0, 0, 0, 0.24);
+  --color-panel-border: rgba(255, 255, 255, 0.70);
+  --color-sidebar-bg: rgba(255, 255, 255, 0.38);
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,32 +110,16 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--color-scrollbar);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.animate-marquee {
-  animation: marquee 28s linear infinite;
+  background: var(--color-scrollbar-hover);
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 .shimmer-text {
   background: linear-gradient(
@@ -96,15 +136,9 @@ body {
 }
 
 @keyframes float-slow {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -40px) scale(1.05);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.95);
-  }
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
 }
 .animate-float-slow {
   animation: float-slow 18s ease-in-out infinite;
@@ -115,17 +149,15 @@ body {
 
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
   -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
 }
 
 .glass {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0)) ,
-    rgba(18, 18, 22, 0.72);
+  background: var(--color-bg-2);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
@@ -137,4 +169,14 @@ body {
 .tilt {
   transform-style: preserve-3d;
   perspective: 800px;
+}
+
+/* ── Glass card effect (light mode only) ──────────────────── */
+.light .panel-glass {
+  backdrop-filter: blur(18px) saturate(200%);
+  -webkit-backdrop-filter: blur(18px) saturate(200%);
+  box-shadow:
+    0 4px 32px rgba(80, 80, 160, 0.10),
+    0 1px 4px rgba(80, 80, 160, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }

@@ -39,7 +39,7 @@ export function Sidebar({ variant = "fixed", onNavigate }: Props) {
   return (
     <aside
       className={cn(
-        "flex h-full flex-col gap-7 border-r border-white/5 bg-bg-2/60 px-5 py-7 backdrop-blur-xl",
+        "flex h-full flex-col gap-7 border-r border-[var(--color-wire)] bg-[var(--color-sidebar-bg)] px-5 py-7 backdrop-blur-xl",
         variant === "fixed" ? "w-[260px] sticky top-0 max-h-screen" : "w-[280px]",
       )}
     >

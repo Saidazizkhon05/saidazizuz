@@ -14,7 +14,7 @@ export function ExperienceSection() {
           className="absolute left-1.5 top-2 bottom-2 w-px sm:left-2.5"
           style={{
             background:
-              "linear-gradient(180deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 60%, transparent 100%)",
+              "linear-gradient(180deg, var(--color-timeline) 0%, var(--color-wire) 60%, transparent 100%)",
           }}
         />
         {roles.map((role, i) => (

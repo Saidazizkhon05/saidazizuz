@@ -12,7 +12,6 @@ interface Props {
   accent: string;
   children: ReactNode;
   className?: string;
-  /** Subtle 3D tilt on cursor (off by default — keeps text flat & readable). */
   tilt?: boolean;
 }
 
@@ -39,7 +38,6 @@ export function SpotlightCard({ accent, children, className, tilt = false }: Pro
     mx.set(px);
     my.set(py);
     if (tilt) {
-      // Very subtle — never enough to push text off-axis.
       rxRaw.set((py - 0.5) * -1.6);
       ryRaw.set((px - 0.5) * 1.6);
     }
@@ -57,9 +55,14 @@ export function SpotlightCard({ accent, children, className, tilt = false }: Pro
       onPointerLeave={onPointerLeave}
       whileHover={{ y: -3 }}
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
-      style={tilt ? { rotateX, rotateY, transformPerspective: 1200 } : undefined}
+      style={{
+        rotateX: tilt ? rotateX : undefined,
+        rotateY: tilt ? rotateY : undefined,
+        transformPerspective: tilt ? 1200 : undefined,
+        borderColor: "var(--color-panel-border)",
+      }}
       className={cn(
-        "group relative overflow-hidden rounded-2xl border border-white/5 bg-panel/80",
+        "panel-glass group relative overflow-hidden rounded-2xl border bg-panel/80",
         className,
       )}
     >
@@ -74,8 +77,7 @@ export function SpotlightCard({ accent, children, className, tilt = false }: Pro
         style={{
           background: borderGlow,
           padding: "1px",
-          WebkitMask:
-            "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+          WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
         }}

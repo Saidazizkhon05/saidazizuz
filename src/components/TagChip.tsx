@@ -18,8 +18,8 @@ export function TagChip({ label, color, dot, className }: Props) {
         className,
       )}
       style={{
-        borderColor: color ? `${color}59` : "rgba(255,255,255,0.08)",
-        backgroundColor: color ? `${color}14` : "rgba(255,255,255,0.025)",
+        borderColor: color ? `${color}59` : "var(--color-wire)",
+        backgroundColor: color ? `${color}14` : "var(--color-tint)",
         color: color ?? "var(--color-muted)",
       }}
     >

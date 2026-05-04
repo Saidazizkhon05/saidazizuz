@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Github, Linkedin, ArrowUpRight, ArrowRight, Menu } from "lucide-react";
+import { Github, Linkedin, ArrowUpRight, ArrowRight, Menu, Sun, Moon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SECTIONS } from "@/lib/sections";
+import { useTheme } from "@/lib/theme";
 
 interface Props {
   onMenu?: () => void;
@@ -46,6 +47,7 @@ export function TopBar({ onMenu }: Props) {
         <ActionButton href="https://github.com/saidazizkhon05" icon={Github} label="GitHub" external />
         <ActionButton href="https://linkedin.com" icon={Linkedin} label="LinkedIn" external />
       </div>
+      <ThemeToggle />
       <ActionButton
         label="Get in touch"
         primary
@@ -120,5 +122,25 @@ function ActionButton({
     >
       {inner}
     </motion.a>
+  );
+}
+
+function ThemeToggle() {
+  const { theme, toggle } = useTheme();
+  return (
+    <motion.button
+      type="button"
+      onClick={toggle}
+      whileHover={{ y: -1 }}
+      whileTap={{ scale: 0.95 }}
+      className="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] border border-[var(--color-wire)] bg-panel text-muted transition-colors hover:text-text"
+      aria-label="Toggle theme"
+    >
+      {theme === "dark" ? (
+        <Sun className="h-4 w-4" strokeWidth={1.6} />
+      ) : (
+        <Moon className="h-4 w-4" strokeWidth={1.6} />
+      )}
+    </motion.button>
   );
 }

@@ -94,7 +94,8 @@ export function DashboardGrid() {
             {projects.map((p) => (
               <span
                 key={p.monogram}
-                className="grid h-8 w-8 place-items-center rounded-lg border border-white/[0.08] bg-panel/80 text-[10px] font-bold"
+                className="grid h-8 w-8 place-items-center rounded-lg border bg-panel/80 text-[10px] font-bold"
+                style={{ borderColor: "var(--color-wire)" }}
                 style={{ color: accentVar[p.accent] }}
               >
                 {p.monogram}
