@@ -10,7 +10,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { cv } from "@/data/cv";
 import { SECTIONS } from "@/lib/sections";
 
 const iconMap = {
@@ -39,12 +38,10 @@ export function Sidebar({ variant = "fixed", onNavigate }: Props) {
   return (
     <aside
       className={cn(
-        "flex h-full flex-col gap-7 border-r border-[var(--color-wire)] bg-[var(--color-sidebar-bg)] px-5 py-7 backdrop-blur-xl",
+        "flex h-full flex-col border-r border-[var(--color-wire)] bg-[var(--color-sidebar-bg)] px-4 pt-5 pb-7 backdrop-blur-xl",
         variant === "fixed" ? "w-[260px] sticky top-0 max-h-screen" : "w-[280px]",
       )}
     >
-      <BrandHeader />
-
       <div className="flex flex-col gap-1">
         {SECTIONS.map((s, i) => (
           <MenuItem
@@ -61,28 +58,6 @@ export function Sidebar({ variant = "fixed", onNavigate }: Props) {
   );
 }
 
-function BrandHeader() {
-  const navigate = useNavigate();
-  return (
-    <motion.button
-      type="button"
-      onClick={() => navigate("/")}
-      initial={{ opacity: 0, y: -6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      whileTap={{ scale: 0.97 }}
-      className="group flex flex-col gap-0.5 text-left cursor-pointer"
-    >
-      <span className="font-mono text-[18px] font-bold leading-none tracking-tight text-text">
-        saidaziz
-        <span style={{ color: "var(--color-accent)" }}>.uz</span>
-      </span>
-      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-dim">
-        {cv.title}
-      </span>
-    </motion.button>
-  );
-}
 
 function MenuItem({
   entry,

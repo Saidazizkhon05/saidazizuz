@@ -20,41 +20,54 @@ export function TopBar({ onMenu }: Props) {
       initial={{ y: -8, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="mb-6 flex flex-wrap items-center gap-2.5 sm:gap-3"
+      className="mb-6 flex items-center gap-3"
     >
       {onMenu && (
         <button
           type="button"
           onClick={onMenu}
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-white/5 bg-panel text-text hover:bg-panel-2 lg:hidden"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-[var(--color-wire)] bg-panel text-text hover:bg-panel-2 lg:hidden"
           aria-label="Open menu"
         >
           <Menu className="h-4 w-4" strokeWidth={1.8} />
         </button>
       )}
-      <p className="font-mono text-[12px] text-muted">
-        <button
-          type="button"
-          onClick={() => navigate("/")}
-          className="hidden transition-colors hover:text-text sm:inline"
-        >
-          saidaziz.uz
-        </button>
-        <span className="hidden sm:inline"> / </span>
-        <span className="font-semibold text-text">{pageLabel}</span>
-      </p>
-      <div className="ml-auto hidden items-center gap-2 sm:flex">
-        <ActionButton href="https://github.com/saidazizkhon05" icon={Github} label="GitHub" external />
-        <ActionButton href="https://linkedin.com" icon={Linkedin} label="LinkedIn" external />
+
+      {/* Brand — always visible on every page */}
+      <motion.button
+        type="button"
+        onClick={() => navigate("/")}
+        whileTap={{ scale: 0.97 }}
+        className="flex cursor-pointer flex-col gap-0.5 text-left"
+      >
+        <span className="font-mono text-[15px] font-bold leading-none tracking-tight text-text">
+          saidaziz<span style={{ color: "var(--color-accent)" }}>.uz</span>
+        </span>
+        <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-dim">
+          Software Engineer
+        </span>
+      </motion.button>
+
+      {pathname !== "/" && (
+        <span className="hidden items-center gap-1.5 font-mono text-[12px] sm:flex">
+          <span className="text-dim">/</span>
+          <span className="text-muted">{pageLabel}</span>
+        </span>
+      )}
+
+      <div className="ml-auto flex items-center gap-2">
+        <div className="hidden items-center gap-2 sm:flex">
+          <ActionButton href="https://github.com/saidazizkhon05" icon={Github} label="GitHub" external />
+          <ActionButton href="https://linkedin.com" icon={Linkedin} label="LinkedIn" external />
+        </div>
+        <ThemeToggle />
+        <ActionButton
+          label="Get in touch"
+          primary
+          trailing={ArrowRight}
+          onClick={() => navigate("/contact")}
+        />
       </div>
-      <ThemeToggle />
-      <ActionButton
-        label="Get in touch"
-        primary
-        trailing={ArrowRight}
-        className="ml-auto sm:ml-0"
-        onClick={() => navigate("/contact")}
-      />
     </motion.div>
   );
 }
@@ -82,7 +95,7 @@ function ActionButton({
     "group inline-flex items-center gap-2 rounded-[10px] px-3.5 py-2 text-[12.5px] font-semibold transition-colors",
     primary
       ? "bg-accent text-bg shadow-[0_18px_40px_-12px_rgba(196,255,77,0.55)] hover:bg-[#d6ff66]"
-      : "border border-white/5 bg-panel text-text hover:border-white/10 hover:bg-panel-2",
+      : "border border-[var(--color-wire)] bg-panel text-text hover:border-[var(--color-wire-2)] hover:bg-panel-2",
     className,
   );
   const inner = (
