@@ -95,8 +95,7 @@ export function DashboardGrid() {
               <span
                 key={p.monogram}
                 className="grid h-8 w-8 place-items-center rounded-lg border bg-panel/80 text-[10px] font-bold"
-                style={{ borderColor: "var(--color-wire)" }}
-                style={{ color: accentVar[p.accent] }}
+                style={{ borderColor: "var(--color-wire)", color: accentVar[p.accent] }}
               >
                 {p.monogram}
               </span>
