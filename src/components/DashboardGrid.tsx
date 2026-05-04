@@ -45,7 +45,6 @@ export function DashboardGrid() {
     >
       {/* ── Identity header ──────────────────────────── */}
       <motion.div variants={fadeUp} className="col-span-12 pb-2">
-        <TagChip label="Available · Remote / Seoul" color="var(--color-accent)" dot />
         <h1 className="mt-5 text-[32px] font-semibold leading-tight tracking-tight text-text sm:text-[38px]">
           {cv.fullName}
         </h1>
